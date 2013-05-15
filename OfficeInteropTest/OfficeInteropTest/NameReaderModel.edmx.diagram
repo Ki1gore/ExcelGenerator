@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0273bb2ac8e746b99655a7179c0beb43" Name="Diagram1">
+        <EntityTypeShape EntityType="NameReader.Model.NameReaderContextModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameReader.Model.NameReaderContextModel.Article" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameReader.Model.NameReaderContextModel.Category" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NameReader.Model.NameReaderContextModel.Name" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="NameReader.Model.NameReaderContextModel.FK_dbo_Categories_dbo_Articles_Article_ArticleId" ManuallyRouted="false" />
+        <AssociationConnector Association="NameReader.Model.NameReaderContextModel.FK_dbo_Names_dbo_Articles_Article_ArticleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

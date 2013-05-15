@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NameReader.Model.NameReaderContextModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="NameReaderModelNameReaderContextModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="NameReader.Model.NameReaderContextModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Articles" EntityType="NameReader.Model.NameReaderContextModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="NameReader.Model.NameReaderContextModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Names" EntityType="NameReader.Model.NameReaderContextModel.Store.Names" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_Categories_dbo_Articles_Article_ArticleId" Association="NameReader.Model.NameReaderContextModel.Store.FK_dbo_Categories_dbo_Articles_Article_ArticleId">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Names_dbo_Articles_Article_ArticleId" Association="NameReader.Model.NameReaderContextModel.Store.FK_dbo_Names_dbo_Articles_Article_ArticleId">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Names" EntitySet="Names" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ArticleText" Type="nvarchar(max)" />
+          <Property Name="ArticleUrl" Type="nvarchar(max)" />
+          <Property Name="ArticleTitle" Type="nvarchar(max)" />
+          <Property Name="ArticleSource" Type="nvarchar(max)" />
+          <Property Name="ArticleDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleCategory" Type="nvarchar(max)" />
+          <Property Name="Article_ArticleId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Names">
+          <Key>
+            <PropertyRef Name="NameID" />
+          </Key>
+          <Property Name="NameID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonName" Type="nvarchar(max)" />
+          <Property Name="Article_ArticleId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_dbo_Categories_dbo_Articles_Article_ArticleId">
+          <End Role="Articles" Type="NameReader.Model.NameReaderContextModel.Store.Articles" Multiplicity="0..1" />
+          <End Role="Categories" Type="NameReader.Model.NameReaderContextModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="Article_ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Names_dbo_Articles_Article_ArticleId">
+          <End Role="Articles" Type="NameReader.Model.NameReaderContextModel.Store.Articles" Multiplicity="0..1" />
+          <End Role="Names" Type="NameReader.Model.NameReaderContextModel.Store.Names" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Names">
+              <PropertyRef Name="Article_ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NameReader.Model.NameReaderContextModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="NameReader.Model.NameReaderContextModel.C__MigrationHistory" />
+          <EntitySet Name="Articles" EntityType="NameReader.Model.NameReaderContextModel.Article" />
+          <EntitySet Name="Categories" EntityType="NameReader.Model.NameReaderContextModel.Category" />
+          <EntitySet Name="Names" EntityType="NameReader.Model.NameReaderContextModel.Name" />
+          <AssociationSet Name="FK_dbo_Categories_dbo_Articles_Article_ArticleId" Association="NameReader.Model.NameReaderContextModel.FK_dbo_Categories_dbo_Articles_Article_ArticleId">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Names_dbo_Articles_Article_ArticleId" Association="NameReader.Model.NameReaderContextModel.FK_dbo_Names_dbo_Articles_Article_ArticleId">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Names" EntitySet="Names" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleText" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleTitle" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleSource" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Categories" Relationship="NameReader.Model.NameReaderContextModel.FK_dbo_Categories_dbo_Articles_Article_ArticleId" FromRole="Articles" ToRole="Categories" />
+          <NavigationProperty Name="Names" Relationship="NameReader.Model.NameReaderContextModel.FK_dbo_Names_dbo_Articles_Article_ArticleId" FromRole="Articles" ToRole="Names" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleCategory" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Article_ArticleId" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="NameReader.Model.NameReaderContextModel.FK_dbo_Categories_dbo_Articles_Article_ArticleId" FromRole="Categories" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Name">
+          <Key>
+            <PropertyRef Name="NameID" />
+          </Key>
+          <Property Name="NameID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Article_ArticleId" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="NameReader.Model.NameReaderContextModel.FK_dbo_Names_dbo_Articles_Article_ArticleId" FromRole="Names" ToRole="Articles" />
+        </EntityType>
+        <Association Name="FK_dbo_Categories_dbo_Articles_Article_ArticleId">
+          <End Role="Articles" Type="NameReader.Model.NameReaderContextModel.Article" Multiplicity="0..1" />
+          <End Role="Categories" Type="NameReader.Model.NameReaderContextModel.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="Article_ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Names_dbo_Articles_Article_ArticleId">
+          <End Role="Articles" Type="NameReader.Model.NameReaderContextModel.Article" Multiplicity="0..1" />
+          <End Role="Names" Type="NameReader.Model.NameReaderContextModel.Name" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Names">
+              <PropertyRef Name="Article_ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NameReaderModelNameReaderContextModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="NameReader.Model.NameReaderContextModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="NameReader.Model.NameReaderContextModel.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleText" ColumnName="ArticleText" />
+                <ScalarProperty Name="ArticleUrl" ColumnName="ArticleUrl" />
+                <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+                <ScalarProperty Name="ArticleSource" ColumnName="ArticleSource" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="NameReader.Model.NameReaderContextModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ArticleCategory" ColumnName="ArticleCategory" />
+                <ScalarProperty Name="Article_ArticleId" ColumnName="Article_ArticleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Names">
+            <EntityTypeMapping TypeName="NameReader.Model.NameReaderContextModel.Name">
+              <MappingFragment StoreEntitySet="Names">
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Article_ArticleId" ColumnName="Article_ArticleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
