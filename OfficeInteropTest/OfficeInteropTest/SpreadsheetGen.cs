@@ -375,9 +375,25 @@ namespace GeneratedCode
             //sheetData3.Append(row5);
             #endregion
 
-            Entities ctx = new Entities(); //db context
-            var articles = ctx.Articles;
-            List<Article> aList = new List<Article>(articles);
+            //Entities ctx = new Entities(); //db context
+            //var articles = ctx.Articles;
+            //List<Article> aList = new List<Article>(articles);
+
+            List<Article> aList = new List<Article>();
+            for (int i = 0; i < 5; i++)  //generate article objects without DB
+            {
+                aList.Add(new Article
+                {
+                    ArticleDescription = "description",
+                    ArticleId = i.ToString(),
+                    ArticleSource = "source",
+                    ArticleText = "article text",
+                    ArticleTitle = "title" + " " + i.ToString(),
+                    ArticleUrl = "www.fake.com",
+                    Categories = new List<Category>(),
+                    Names = new List<Name>()
+                });
+            }
 
             sheetData3.Append(GetRowsFromModel(aList)); 
 
@@ -470,7 +486,11 @@ namespace GeneratedCode
         //returns the value of the property of a given object
         public static object GetPropValue(object src, string propName)
         {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
+            if (src != null)
+            {
+                return src.GetType().GetProperty(propName).GetValue(src, null);    
+            }
+            return "null";
         }
 
         //returns a list of properties for a class T
